@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자</title>
+    <style>
+      /* 가상 클래스 */
+      /* hover: 마우스 커서 올렸을 때 */
+      a:hover {
+        color: white !important;
+        background-color: black;
+      }
+      /* active: 마우스 클릭하고 있는 동안 */
+      a:active {
+        background-color: red;
+      }
+      /* focus */
+      input:focus {
+        background-color: gray;
+      }
+      /* first-child */
+      .fruits span:first-child {
+        color: red;
+      }
+      /* div가 첫번째 자식요소가 아니기 때문에 선택x */
+      /* 자식 오렌지는 첫번째 자식요소가 아니지만 하위오렌지는 첫번쨰에 해당 */
+      .fruits div:first-child {
+        color: violet;
+      }
+      /* last-child */
+      .fruits h3:last-child {
+        color: pink;
+      }
+      /* nth-child(n) */
+      .fruits *:nth-child(2) {
+        color: aqua;
+      }
+      /* nth-child(n) */
+      .fruits *:nth-child(2n) {
+        /* n은 0부터 */
+        background-color: yellow;
+      }
+      .fruits *:nth-child(2n + 1) {
+        text-decoration: line-through;
+      }
+      /* not */
+      .fruits *:not(span) {
+        background-color: lightblue;
+      }
+      /* 가상 요소 선택자 */
+      /* before */
+      .fruits::before {
+        content: "🥝";
+        /* content: url(이미지 주소); */
+      }
+      /* after */
+      .fruits::after {
+        content: "과일 목록 끝";
+      }
+      /* 속성 선택자 */
+      [readonly] {
+        background-color: lightblue;
+      }
+      *:not([placeholder]) {
+        background-color: blueviolet;
+      }
+
+      /* css 선택자 우선순위 */
+      a:hover {
+        color: red;
+        /* 위에서 !important가 없었다면 빨간색으로 적용됨 */
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="https://www.naver.com">Naver</a>
+    <br />
+    <input type="text" />
+    <hr />
+    <div class="fruits">
+      <span>딸기</span>
+      <span>수박</span>
+      <div>
+        자식 오렌지
+        <div>하위 오렌지</div>
+      </div>
+      <p>망고</p>
+      <h3>사과</h3>
+    </div>
+
+    <hr />
+    <input type="text" />
+    <input type="text" readonly />
+    <input type="password" placeholder="PW" />
+  </body>
+</html>
