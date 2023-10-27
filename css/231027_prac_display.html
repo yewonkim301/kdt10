@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습. 요소 사라지게 하기</title>
+    <style>
+      .square {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        color: white;
+        text-align: center;
+        line-height: 200px;
+      }
+      .opacity:hover {
+        opacity: 0;
+      }
+      .visibility:hover {
+        visibility: hidden;
+      }
+      .d-none:hover {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="square d-none">d-none</div>
+    <div class="square visibility">visibility</div>
+    <div class="square opacity">opacity</div>
+  </body>
+</html>

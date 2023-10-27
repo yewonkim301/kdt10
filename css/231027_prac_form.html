@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습. 설문조사 폼 꾸미기</title>
+    <style>
+      @font-face {
+        font-family: "GangwonEdu_OTFBoldA";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      form {
+        border-top: 4px dotted gray;
+        border-bottom: 4px dotted gray;
+        padding: 30px;
+        font-family: GangwonEdu_OTFBoldA;
+      }
+      h1 {
+        text-align: center;
+      }
+      span {
+        font-size: 22px;
+      }
+      .form {
+        background-color: beige;
+      }
+      .text {
+        margin: 4px 8px;
+        border-radius: 8px;
+        height: 20px;
+        padding: 3px;
+      }
+      .text:focus {
+        background-color: darkseagreen;
+        opacity: 0.3;
+        border: none;
+      }
+      textarea,
+      .text {
+        background-color: darkseagreen;
+        opacity: 0.5;
+        border: none;
+      }
+
+      textarea {
+        border-radius: 20px;
+        padding: 10px;
+      }
+      .button {
+        border: none;
+        border-radius: 50%;
+        background-color: darkkhaki;
+        width: 33px;
+        height: 33px;
+        text-align: center;
+        color: white;
+        font-size: 14px;
+        font-weight: 800;
+        font-family: GangwonEdu_OTFBoldA;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="form">
+      <h1>설문조사</h1>
+      <span>이름<input class="text" type="text" /></span> <br />
+      <span
+        >이메일<input
+          class="text"
+          type="text"
+          placeholder="love@example.com" /></span
+      ><br /><br />
+      <h2>나이</h2>
+      <input type="radio" name="age" value="10" checked />10대
+      <input type="radio" name="age" value="20" />20대
+      <input type="radio" name="age" value="30" />30대
+      <input type="radio" name="age" value="40" />40대
+      <input type="radio" name="age" value="50" />50대
+      <input type="radio" name="age" value="60" />60대 이상<br /><br />
+      <h2>원하는 강의(복수응답가능합니다.)</h2>
+      <input type="checkbox" name="class" value="html" checked />html
+      <input type="checkbox" name="class" value="js" />javascript
+      <input type="checkbox" name="class" value="css" />css<br /><br />
+      <textarea
+        rows="5"
+        cols="50"
+        placeholder="하고 싶은 말을 써주세요:)"
+      ></textarea>
+      <input class="button" type="button" value="제출" />
+    </form>
+  </body>
+</html>
