@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>background</title>
+    <style>
+      div {
+        background-color: orange;
+        width: 500px;
+        height: 500px;
+      }
+      .background-img {
+        background-image: url("https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a");
+
+        /* 1. background-repeat */
+        background-repeat: repeat; /* default */
+        background-repeat: repeat-x;
+        background-repeat: repeat-y;
+        background-repeat: no-repeat; /* 마지막 값으로 적용 */
+
+        /* background-position */
+        /* background-position: left; */
+        /* background-position: left top; */
+        /* background-position: center; */
+        /* background-position: 10px 100px; /* x축 y축 순으로 적용 */
+        /* background-position: 100px; */ /* x 축에 대해서만 적용 */
+
+        /* background-size */
+        background-size: auto; /* default */
+        background-size: 100px 50px; /* x -> y 순으로 적용 */
+        background-size: cover;
+        background-size: contain;
+      }
+      /* background-attachment */
+      .background-attach {
+        width: 300px;
+        height: 300px;
+        background-image: url("https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a");
+        overflow: scroll;
+        /* background-attachment: local; */
+        /* background-attachment: scroll; */
+        /* scroll: 이미지가 요소 기준. 이미지가 같이 스크롤되기 때문에 이미지가 움직이지 않는 것처럼 보일 수 있음 */
+        background-attachment: fixed;
+        /* fixed: 이미지가 뷰포트 기준.*/
+      }
+    </style>
+  </head>
+  <body style="height: 1000px">
+    <div class="background-img"></div>
+    <div class="background-attach">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+      deserunt qui libero maiores architecto commodi sunt nisi nihil eum eaque
+      similique, animi a deleniti quo delectus doloribus, minus, assumenda
+      aliquam. Maxime, architecto ex officia laborum voluptatum nisi. Sapiente
+      recusandae illum optio laboriosam explicabo. Reiciendis atque quos a
+      veritatis libero reprehenderit eaque ipsum blanditiis doloremque placeat
+      natus pariatur ex, et iste! Odit pariatur saepe itaque voluptate rerum
+      inventore ratione quas delectus, architecto, perferendis at nihil autem
+      soluta ea impedit repellendus asperiores adipisci in a suscipit ad
+      deleniti debitis alias ut. Soluta! Tempora laboriosam nam vel perferendis
+      consequatur soluta minima asperiores minus saepe dolorem voluptatibus
+      sapiente quo, obcaecati, officia doloremque, repellat ducimus qui odio
+      sequi quasi. Voluptatum natus necessitatibus provident sit. Ipsum! Lorem
+      ipsum dolor, sit amet consectetur adipisicing elit. Id aliquam dicta ea
+      maxime adipisci numquam, maiores iure excepturi, eius itaque doloribus
+      provident nostrum magni culpa odio! Provident reprehenderit aliquam porro!
+    </div>
+  </body>
+</html>

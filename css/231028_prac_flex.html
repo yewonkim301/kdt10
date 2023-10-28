@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex</title>
+    <style>
+      /* 실습5. flex-direction(49p) */
+      .container {
+        background-color: antiquewhite;
+        width: 500px;
+        height: 500px;
+        margin-bottom: 5px;
+        display: flex;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+      }
+      .contain1 {
+        flex-direction: row;
+      }
+      .contain2 {
+        flex-direction: row-reverse;
+      }
+      .contain3 {
+        flex-direction: column;
+      }
+      .item1 {
+        background-color: paleturquoise;
+      }
+      .item2 {
+        background-color: palevioletred;
+      }
+      .prac6-2 {
+        flex-wrap: wrap;
+      }
+      .prac7-1 {
+        flex-wrap: nowrap;
+        justify-items: center;
+        align-items: center;
+      }
+
+      .prac7-2 {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .prac7-3 {
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+      }
+      .prac7-4 {
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 실습5. flex-direction(49p) -->
+    <div class="container contain1">
+      <div class="box" style="background-color: green">item1</div>
+      <div class="box" style="background-color: yellow">item2</div>
+      <div class="box" style="background-color: yellowgreen">item3</div>
+    </div>
+    <div class="container contain2">
+      <div class="box" style="background-color: green">item1</div>
+      <div class="box" style="background-color: yellow">item2</div>
+      <div class="box" style="background-color: yellowgreen">item3</div>
+    </div>
+    <div class="container contain3">
+      <div class="box" style="background-color: green">item1</div>
+      <div class="box" style="background-color: yellow">item2</div>
+      <div class="box" style="background-color: yellowgreen">item3</div>
+    </div>
+
+    <!-- 실습6. flex-wrap -->
+    <div class="container prac6-1">
+      <div class="box item1"></div>
+      <div class="box item2"></div>
+      <div class="box item1"></div>
+      <div class="box item2"></div>
+      <div class="box item1"></div>
+      <div class="box item2"></div>
+      <div class="box item1"></div>
+      <div class="box item2"></div>
+    </div>
+    <div class="container prac6-2">
+      <div class="box item1"></div>
+      <div class="box item2"></div>
+      <div class="box item1"></div>
+      <div class="box item2"></div>
+      <div class="box item1"></div>
+      <div class="box item2"></div>
+      <div class="box item1"></div>
+      <div class="box item2"></div>
+    </div>
+
+    <!-- 실습7. flex-wrap(62p) -->
+    <div class="container prac7-1">
+      <div class="box item1">1</div>
+      <div class="box item2">2</div>
+      <div class="box item1">3</div>
+      <div class="box item2">4</div>
+      <div class="box item1">5</div>
+      <div class="box item2">6</div>
+      <div class="box item1">7</div>
+      <div class="box item2">8</div>
+    </div>
+    <div class="container block prac7-2">
+      <div class="box item1">1</div>
+      <div class="box item2">2</div>
+      <div class="box item1">3</div>
+      <div class="box item2">4</div>
+      <div class="box item1">5</div>
+      <div class="box item2">6</div>
+      <div class="box item1">7</div>
+      <div class="box item2">8</div>
+    </div>
+    <div class="container prac7-3">
+      <div class="box item1">1</div>
+      <div class="box item2">2</div>
+      <div class="box item1">3</div>
+      <div class="box item2">4</div>
+      <div class="box item1">5</div>
+      <div class="box item2">6</div>
+      <div class="box item1">7</div>
+      <div class="box item2">8</div>
+    </div>
+    <div class="container prac7-4">
+      <div class="box item1">1</div>
+      <div class="box item2">2</div>
+      <div class="box item1">3</div>
+      <div class="box item2">4</div>
+      <div class="box item1">5</div>
+      <div class="box item2">6</div>
+      <div class="box item1">7</div>
+      <div class="box item2">8</div>
+    </div>
+  </body>
+</html>
