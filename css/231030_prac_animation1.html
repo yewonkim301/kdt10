@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .circle {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        border-radius: 50%;
+        position: absolute;
+        animation-name: ani;
+        animation-duration: 3s;
+        animation-timing-function: ease;
+        animation-iteration-count: 6;
+        animation-delay: 2s;
+      }
+      @keyframes ani {
+        0% {
+          top: 0px;
+          left: 0px;
+        }
+        25% {
+          top: 0px;
+          left: 400px;
+        }
+        50% {
+          top: 200px;
+          left: 400px;
+        }
+        75% {
+          top: 200px;
+          left: 0px;
+        }
+        100% {
+          top: 0px;
+          left: 0px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="circle"></div>
+  </body>
+</html>

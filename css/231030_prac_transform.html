@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 200px;
+        height: 100px;
+        /* z-index 속성 주기 위해 position 값 주기 */
+        position: absolute;
+      }
+      .img1 {
+        /* translate 대신 top, left로 위치를 이동시켜도 됨. */
+        transform: translateY(80px) skewY(20deg);
+        z-index: 3;
+      }
+      .img2 {
+        z-index: 2;
+        transform: translate(130px, 60px) skewY(20deg);
+      }
+      .img3 {
+        transform: translate(260px ,40px) skewY(20deg);
+      }
+    </style>
+  </head>
+  <body>
+      <img
+        class="img1"
+        src="https://i.pinimg.com/564x/92/6a/44/926a44c38c195bdabb29bea6bbdc1724.jpg"
+      />
+      <img
+        class="img2"
+        src="https://i.pinimg.com/474x/15/13/14/151314241337b5151e0956c1bf113128.jpg"
+      /><img
+        class="img3"
+        src="https://i.pinimg.com/474x/2a/27/a2/2a27a2c369a7f5659fad657529f41864.jpg"
+      />
+    </div>
+  </body>
+</html>

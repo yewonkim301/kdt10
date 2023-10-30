@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        color: white;
+        overflow: scroll;
+        transition-property: width, height;
+        /* 여러 개 작성할 때는 콤마로 구분 */
+        transition-duration: 1s;
+        transition-timing-function: ease;
+        transition-delay: 0.5s;
+        /* transition-property: all -> 모든 변화에 대해서 감지를 하겠다는 의미 */
+        /* transition: linear 변화 속도 균일하게 */
+        /* transition: all 1s linear 0.5s 로도 작성 가능 */
+      }
+      div:hover {
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Transition 실습</h1>
+    <div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis nam,
+      vitae sunt dicta nesciunt architecto at eveniet doloremque! Nulla eius
+      eligendi, repudiandae omnis neque architecto quia! Eum veritatis magnam
+      blanditiis!
+    </div>
+  </body>
+</html>
