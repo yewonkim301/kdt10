@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 실습7(39p)
+      for (let i = 0; i <= 10000; i++) {
+        if (i % 13 == 0 && i % 2 != 0)
+          console.log(i, "는 13의 배수이면서 홀수입니다.");
+      }
+      /* 
+        for (let i = 0; i <= 10000; i + 13) {
+        if (i % 2 == 1) console.log(i);
+        }
+      */
+      // let num = Number(prompt("숫자를 입력하세요."));
+      // for (let i = 0; i <= num; i++) {
+      //   if (i % 13 == 0 && i % 2 != 0)
+      //     console.log(i, "는 13의 배수이면서 홀수입니다.");
+      // }
+
+      // 실습8(40p)
+      for (let i = 2; i < 10; i++) {
+        console.log(`-- ${i}단 --`);
+        for (let j = 1; j < 10; j++) {
+          console.log(`${i} x ${j} = ${i * j}`);
+        }
+      }
+
+      // 실습9(51p)
+      let sum = 0;
+      let n = Number(prompt("0 보다 크고 100보다 작은 숫자를 입력하세요."));
+      // for 문
+      for (let i = 1; i <= n; i++) {
+        if (i % 2 != 0 && i % 3 != 0) {
+          continue;
+        }
+        sum += i;
+      }
+
+      // 해설
+      /*
+      for (let i = 0; i < n; i++) {
+        if (n <= 0 || n >= 100) alert("입력값이 잘못됐습니다.");
+        else {
+          if (i % 2 == 0 || i % 3 == 0) sum += i;
+        }
+      }
+      console.log(sum);
+      */
+
+      // while 문
+      let i = 1;
+      while (i <= n) {
+        if (i % 2 == 0 || i % 3 == 0) {
+          sum += i;
+        }
+        i++;
+      }
+      console.log(sum);
+    </script>
+  </head>
+  <body></body>
+</html>

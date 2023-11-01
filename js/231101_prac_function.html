@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 실습1(14p)
+      function multiply(num1, num2) {
+        return num1 * num2;
+        // 예외 처리
+        // return Number(num1) * Number(num2);
+      }
+      // test
+      // console.log(multiply(3, 7));
+
+      // 실습2(15p)
+      function square(num) {
+        console.log(num * num);
+        // let num1 = Number(num);
+        // console.log(num1 * num1);
+      }
+
+      // test
+      square(4);
+
+      // 실습3(18p)
+      let num1 = Number(prompt("첫 번째 숫자를 입력해주세요."));
+      let num2 = Number(prompt("두 번째 숫자를 입력해주세요."));
+
+      function add() {
+        console.log(num1 + num2);
+      }
+      function sub() {
+        console.log(num1 - num2);
+      }
+      function divide() {
+        console.log(num1 / num2);
+      }
+      function mul() {
+        console.log(num1 * num2);
+      }
+      // 오답 풀이
+      /*
+      let num1 = Number(prompt("첫 번째 숫자를 입력해주세요."));
+      let num2 = Number(prompt("두 번째 숫자를 입력해주세요."));
+
+      function add(num1, num2) {
+        console.log(num1 + num2);
+      }
+      전역변수로 num1, num2가 선언되어 있는 상태에서 함수 안에서 다시 변수를 선언하려고 하니 오류가 났던 것! -> 전역변수, 지역변수 주의!
+      */
+
+      // 실습3번 해설
+      // 전역변수랑 지역변수
+      // 전역변수 > 지역변수 범위가 큰 것
+      // 전역변수 : script 태그 안에 쓰면 어디서든 변수를 사용할 수 있음
+      // but 지역변수 좀 더 특별한 것
+      /*
+      let num1 = prompt("첫 번째 숫자");
+      num1 = Number(num1);
+      let num2 = prompt("두 번째 숫자");
+      num2 = Number(num2);
+
+      function add() {
+        let result = num1 + num2;
+        alert(result);
+      }
+      function sub() {
+        let result = num1 - num2;
+        alert(result);
+      }
+      function mul() {
+        let result = num1 * num2;
+        alert(result);
+      }
+      function div() {
+        let result = num1 / num2;
+        alert(result);
+      }
+      */
+    </script>
+  </head>
+  <body>
+    <!-- 실습 3 -->
+    <button onclick="add()">더하기</button>
+    <button onclick="sub()">빼기</button>
+    <button onclick="divide()">나누기</button>
+    <button onclick="mul()">곱하기</button>
+  </body>
+</html>
