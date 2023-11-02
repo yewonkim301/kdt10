@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array for문</title>
+    <script>
+      let fruits = ["apple", "banana", "orange", "melon", "grape"];
+
+      console.log("for basic");
+      // 배열의 길이가 달라지면 값도 달라지도록 -> 재사용 가능하도록
+      for (let i = 0; i < fruits.length; i++) {
+        console.log(fruits[i]);
+      }
+
+      console.log("for of");
+      // of 뒤에는 사용할 배열 적기
+      for (let fruit of fruits) {
+        console.log(fruit);
+      }
+
+      console.log("for each");
+      fruits.forEach((fruit, index, arr) => {
+        console.log("fruit: ", fruit); // 첫 번째 값 반환
+        console.log("index: ", index); // 첫 번쨰 값 반환
+        console.log("arr: ", arr);
+      });
+      // index만 쓰려고 할 때는 arr를 생략해도 되지만, index를 생략하고 arr를 쓸 수는 없음
+      fruits.forEach((fruit) => {
+        console.log("fruit: ", fruit);
+      });
+
+      // filter
+      console.log("filter");
+      let filterResult = fruits.filter((fruit) => {
+        return fruit.includes("p");
+      });
+      // 한 줄일 때만 이렇게도 작성 가능
+      let filterResult2 = fruits.filter((fruit) => fruit.includes("p"));
+      console.log("filterResult: ", filterResult);
+      console.log("filterResult2: ", filterResult2);
+    </script>
+  </head>
+  <body></body>
+</html>

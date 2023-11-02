@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //  실습1 (20p)
+      let numbers = [];
+      for (let i = 0; i < 100; i++) {
+        numbers[i] = i + 1;
+      }
+      // 해설
+      /*
+      for (let i = 1; i <= 100; i++) {
+        numbers.push(i);
+      }
+      */
+      console.log(numbers);
+
+      // for 문
+      let forSum = 0;
+      // i < 100 대신 numbers.length 사용 가능
+      for (let i = 0; i < 100; i++) {
+        forSum = forSum + numbers[i];
+      }
+      console.log("for: ", forSum);
+
+      // for of 문
+      let forOfSum = 0;
+      for (let number of numbers) {
+        forOfSum = forOfSum + number;
+      }
+      console.log("for of: ", forOfSum);
+
+      // for each 문
+      let forEachSum = 0;
+      numbers.forEach((number) => {
+        forEachSum = forEachSum + number;
+      });
+      console.log("forEach: ", forEachSum);
+
+      // 실습2(21p)
+      let fruits1 = [
+        "사과",
+        "딸기",
+        "파인애플",
+        "수박",
+        "참외",
+        "오렌지",
+        "자두",
+        "망고",
+      ];
+      let fruits2 = ["수박", "사과", "참외", "오렌지", "파인애플", "망고"];
+
+      let same = fruits1.filter((fruit) => fruits2.includes(fruit));
+      console.log("동일한 요소: ", same);
+      // 해섷
+      /*
+      let same = [];
+      let diff = [];
+      for (let i = 0; i < fruits1.length; i++) {
+        if(fruits2.includes(fruits1[i])) {
+            same.push(fruits1[i]);
+        } else {
+            diff.push(fruits1[i]);
+        }
+      }
+      */
+
+      let diff = fruits1.filter((fruit) => !fruits2.includes(fruit));
+      console.log("서로 다른 요소: ", diff);
+    </script>
+  </head>
+  <body></body>
+</html>
