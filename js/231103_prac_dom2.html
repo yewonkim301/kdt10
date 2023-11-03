@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 400px;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: center;
+      }
+      body div:first-child {
+        margin-bottom: 20px;
+      }
+      body div:nth-child(2),
+      body div:nth-child(3) {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+      input {
+        margin-left: 5px;
+      }
+      button {
+        margin: 15px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>방명록입니다.</div>
+    <div>작성자<input type="text" id="name" /></div>
+    <div>내용<input type="text" id="content" /></div>
+    <button onclick="inputText()">작성</button>
+    <table id="table">
+      <tr id="row">
+        <th>번호</th>
+        <th>작성자</th>
+        <th>내용</th>
+        <th>작성일</th>
+      </tr>
+    </table>
+
+    <script>
+      let tableIndex = document.getElementById("tableIndex");
+      let tableName = document.getElementById("tableName");
+      let tableContent = document.getElementById("tableContent");
+      let tableDate = document.getElementById("tableDate");
+      let name = document.getElementById("name");
+      let content = document.getElementById("content");
+
+      let now = new Date();
+      let year = now.getFullYear();
+      let month = now.getMonth() + 1;
+      let date = now.getDate();
+      let hour = now.getHours();
+      let minute = now.getMinutes();
+      let index = 1;
+
+      function inputText() {
+        let table = document.getElementById("table");
+
+        let newRow = table.insertRow();
+        newRow.innerHTML = `<td id="tableIndex">${index}</td><td id="tableName">${name.value}</td><td id="tableContent">${content.value}</td><td id="tableDate">${year}-${month}-${date} ${hour} : ${minute}</td>`;
+        index++;
+      }
+    </script>
+  </body>
+</html>
