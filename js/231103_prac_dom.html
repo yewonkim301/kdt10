@@ -7,6 +7,7 @@
   </head>
   <body>
     <div>값1: <input type="text" id="num1" /></div>
+    <!-- input 타입이 텍스트일 때 입력되는 값은 타입이 string -->
     <div>값2: <input type="text" id="num2" /></div>
     <div>연산자: <input type="text" id="operator" /></div>
     <div>결과: <input type="text" id="result" /></div>
@@ -29,21 +30,38 @@
         if (operator.value == "+") {
           result.value = Number(num1.value) + Number(num2.value);
         } else if (operator.value == "-") {
-          console.log(num1.value);
           result.value = Number(num1.value) - Number(num2.value);
         } else if (operator.value == "*") {
-          console.log(num1.value);
           result.value = Number(num1.value) * Number(num2.value);
         } else if (operator.value == "/") {
-          console.log(num1.value);
           result.value = Number(num1.value) / Number(num2.value);
         }
       }
+
+      // 해설 (switch문 활용)
+      /*
+      switch(operator.value) {
+        case '+':
+          result.value = Number(num1.value) + Number(num2.value);
+          break;
+        case '-':
+          result.value = Number(num1.value) - Number(num2.value);
+          break;
+        case '*':
+          result.value = Number(num1.value) * Number(num2.value);
+          break;
+        case '\':
+           result.value = Number(num1.value) / Number(num2.value);
+           break;
+      }
+      */
+
       function reset() {
         num1.value = "";
         num2.value = "";
         operator.value = "";
         result.value = "";
+        // num1.setAttribute("value", "");  로도 작성 가능
       }
     </script>
   </body>
