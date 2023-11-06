@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <script>
+      function apple() {
+        $("img").attr("src", "practice1_img/apple.png");
+      }
+      function banana() {
+        $("img").attr("src", "practice1_img/banana.png");
+      }
+      function grape() {
+        $("img").attr("src", "practice1_img/grape.png");
+      }
+      function peach() {
+        $("img").attr("src", "practice1_img/peach.png");
+      }
+    </script>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+      }
+      .image,
+      img {
+        width: 450px;
+        height: 450px;
+      }
+      .btn {
+        display: flex;
+        justify-content: center;
+      }
+      button {
+        margin-right: 5px;
+      }
+    </style>
+
+    <!-- 해설 -->
+    <!-- 
+    <script>
+      function changeImg(name) {
+        // img의 src속성을 변경해주는 함수 -> 기능은 동일하기 때문
+        // name: apple or banana or grape or peach
+        $("img").attr("src", `practice1_img/${name}.png`);
+      }
+    </script>
+     -->
+  </head>
+  <body>
+    <div class="container">
+      <div class="image"><img src="" alt="" /></div>
+      <div class="btn">
+        <button onclick="apple()">사과</button>
+        <button onclick="banana()">바나나</button>
+        <button onclick="grape()">포도</button>
+        <button onclick="peach()">복숭아</button>
+      </div>
+    </div>
+
+    <!-- 해설 -->
+    <!-- 
+    <img src="" alt="과일" width="100px" heigh="100px" />
+    <button onclick="changeImg('apple')">사과</button>
+    <button onclick="changeImg('banana')">바나나</button>
+    <button onclick="changeImg('grape')">포도</button>
+    <button onclick="changeImg('peach')">복숭아</button> 
+    -->
+  </body>
+</html>
