@@ -25,6 +25,9 @@
       td > p:hover {
         cursor: pointer;
       }
+      p {
+        margin: 0;
+      }
     </style>
   </head>
 
@@ -108,11 +111,16 @@
     </table>
 
     <script>
+      let writeHere;
       $("td > p").on("click", function (e) {
-        $("#date").attr("value", e.target.innerText);
+        $("#date").val(e.target.innerText);
+        writeHere = e.target;
       });
       function writeSchedule() {
-        $("").after(`<p>${$(content).val()}</p>`);
+        $(writeHere)
+          .parent()
+          .append(`<p>${$(content).val()}</p>`);
+        $(content).val("");
       }
     </script>
   </body>
