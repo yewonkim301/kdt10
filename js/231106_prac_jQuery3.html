@@ -122,6 +122,41 @@
           .append(`<p>${$(content).val()}</p>`);
         $(content).val("");
       }
+
+      // 해설
+      /*
+      // this를 기억하기 위한 전역변수
+      let target;
+
+      $("td > p").on("click", function () {
+        console.log(this);
+        // 날짜만 가져오려면 this의 text값을 가져와야 함
+        console.log($(this).text());
+
+        // 닐짜, 내용 input 선택
+        $("#date").val($(this).text());
+
+        // this 는 스코프(중괄호)를 벗어나면 사용할 수 없기 때문에 전역변수 선언 필요
+        // target에 this 기억해두기
+        target = this;
+      });
+
+      function writeSchedule() {
+        let content = $("#content").val();
+
+        // 요소 추가
+        // target 안에 요소가 이미 들어가 있기 때문에 target 자체가 요소가 된다
+        $(target)
+          .parent()
+          .append("<span>" + content + "</span><br />");
+        // 단락은 아니니까 p 태그 대신 큰 의미가 없는 span 태그 사용
+        // $(target.parentNode).append(~~)
+
+        // 초기화
+        $("#content").val("");
+        $("#date").val("");      // 날짜 초기화
+      }
+      */
     </script>
   </body>
 </html>
