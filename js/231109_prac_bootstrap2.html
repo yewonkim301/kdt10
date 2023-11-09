@@ -23,5 +23,314 @@
     />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <!-- header  -->
+    <header class="py-2 bg-body-tertiary border-bottom">
+      <div class="container d-flex flex-wrap">
+        <ul class="nav me-auto">
+          <li class="nav-item">
+            <a
+              href="#"
+              class="nav-link link-body-emphasis px-2 active"
+              aria-current="page"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link link-body-emphasis px-2">Features</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link link-body-emphasis px-2">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link link-body-emphasis px-2">FAQs</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link link-body-emphasis px-2">About</a>
+          </li>
+        </ul>
+        <ul class="nav">
+          <li class="nav-item">
+            <a href="#" class="nav-link link-body-emphasis px-2">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link link-body-emphasis px-2">Sign up</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- img -->
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div
+          class="carousel-item active"
+          style="
+            background-image: url(https://allforyoung-homepage-maycan.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2023/07/02/45507fb6cbfa418985a9234c0569998a.png);
+            background-size: contain;
+          "
+        >
+          <svg
+            class="bd-placeholder-img"
+            width="100%"
+            height="100%"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+          </svg>
+          <div class="container">
+            <div class="carousel-caption text-start">
+              <!--  -->
+            </div>
+          </div>
+        </div>
+        <div
+          class="carousel-item"
+          style="
+            background-image: url(data:image/png;base64,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);
+            background-size: contain;
+          "
+        >
+          <svg
+            class="bd-placeholder-img"
+            width="100%"
+            height="100%"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+          </svg>
+          <div class="container">
+            <div class="carousel-caption">
+              <!--  -->
+            </div>
+          </div>
+        </div>
+        <div
+          class="carousel-item"
+          style="
+            background-image: url(https://res.cloudinary.com/linkareer/image/fetch/f_auto,q_50/https://api.linkareer.com/attachments/270557);
+            background-size: contain;
+          "
+        >
+          <svg
+            class="bd-placeholder-img"
+            width="100%"
+            height="100%"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+          </svg>
+          <div class="container">
+            <div class="carousel-caption text-end">
+              <!--  -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#myCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#myCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- login -->
+    <div
+      style="padding: 50px 120px"
+      class="d-flex align-items-center py-4 bg-body-tertiary"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+        <symbol id="check2" viewBox="0 0 16 16">
+          <path
+            d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"
+          />
+        </symbol>
+        <symbol id="circle-half" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+        </symbol>
+        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+          <path
+            d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
+          />
+          <path
+            d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"
+          />
+        </symbol>
+        <symbol id="sun-fill" viewBox="0 0 16 16">
+          <path
+            d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+          />
+        </symbol>
+      </svg>
+
+      <div
+        class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
+      >
+        <button
+          class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+          id="bd-theme"
+          type="button"
+          aria-expanded="false"
+          data-bs-toggle="dropdown"
+          aria-label="Toggle theme (auto)"
+        >
+          <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+            <use href="#circle-half"></use>
+          </svg>
+          <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-end shadow"
+          aria-labelledby="bd-theme-text"
+        >
+          <li>
+            <button
+              type="button"
+              class="dropdown-item d-flex align-items-center"
+              data-bs-theme-value="light"
+              aria-pressed="false"
+            >
+              <svg
+                class="bi me-2 opacity-50 theme-icon"
+                width="1em"
+                height="1em"
+              >
+                <use href="#sun-fill"></use>
+              </svg>
+              Light
+              <svg class="bi ms-auto d-none" width="1em" height="1em">
+                <use href="#check2"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="dropdown-item d-flex align-items-center"
+              data-bs-theme-value="dark"
+              aria-pressed="false"
+            >
+              <svg
+                class="bi me-2 opacity-50 theme-icon"
+                width="1em"
+                height="1em"
+              >
+                <use href="#moon-stars-fill"></use>
+              </svg>
+              Dark
+              <svg class="bi ms-auto d-none" width="1em" height="1em">
+                <use href="#check2"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="dropdown-item d-flex align-items-center active"
+              data-bs-theme-value="auto"
+              aria-pressed="true"
+            >
+              <svg
+                class="bi me-2 opacity-50 theme-icon"
+                width="1em"
+                height="1em"
+              >
+                <use href="#circle-half"></use>
+              </svg>
+              Auto
+              <svg class="bi ms-auto d-none" width="1em" height="1em">
+                <use href="#check2"></use>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <main class="form-signin w-100 m-auto">
+        <form>
+          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+          <div class="form-floating">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+
+          <div class="form-check text-start my-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="remember-me"
+              id="flexCheckDefault"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              Remember me
+            </label>
+          </div>
+          <button class="btn btn-primary w-100 py-2" type="submit">
+            Sign in
+          </button>
+          <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p>
+        </form>
+      </main>
+      <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+  </body>
 </html>
