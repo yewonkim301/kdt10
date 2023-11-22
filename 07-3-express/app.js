@@ -20,7 +20,24 @@ app.get("/", function (req, res) {
 
   // index라는 파일명을 찾아서 해당 파일 렌더
   // view engine을 ejs로 했기 때문에 확장자명 생략함
-  res.render("index");
+  res.render("index", {
+    btns: ["사과", "오렌지", "키위"],
+    isLogin: true,
+    me: {
+      name: "Yewon",
+      msg: "반갑습니다~",
+    },
+  });
+});
+
+// login 경로로 접속했을 때
+app.get("/login", function (req, res) {
+  res.render("login");
+});
+
+// register 경로로 접속했을 때
+app.get("/register", function (req, res) {
+  res.render("register");
 });
 
 app.get("/kdt", function (req, res) {
