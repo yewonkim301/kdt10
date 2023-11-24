@@ -3,7 +3,7 @@ const app = express();
 const PORT = 8000;
 
 app.set("view engine", "ejs");
-app.set("/views", "views");
+app.set("views", "./views");
 
 // 미들웨어 등록
 
