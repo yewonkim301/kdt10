@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 실습 get -->
+    <h2>실습 get 결과 확인하기</h2>
+    <div>
+      이름 :
+      <span> <%= userInfo.pracGetId %> </span>
+    </div>
+    <div>
+      성별 :
+      <span> <%= userInfo.gender %></span>
+    </div>
+    <div>
+      생년월일 :
+      <span> <%= userInfo.year %> 년</span>
+      <span> <%= userInfo.month %> 월</span>
+      <span> <%= userInfo.day %> 일</span>
+    </div>
+    <div>
+      관심사 :
+      <span> <%= userInfo.hobby %> </span>
+    </div>
+    <br />
+    <!-- 실습 post -->
+    <h2>실습 post 결과 확인하기</h2>
+    <div>
+      이름 :
+      <span> <%= userInfo.pracGetId2 %> </span>
+    </div>
+    <div>
+      성별 :
+      <span> <%= userInfo.gender2 %></span>
+    </div>
+    <div>
+      생년월일 :
+      <span> <%= userInfo.year2 %> 년</span>
+      <span> <%= userInfo.month2 %> 월</span>
+      <span> <%= userInfo.day2 %> 일</span>
+    </div>
+    <div>
+      관심사 :
+      <span> <%= userInfo.hobby2 %> </span>
+    </div>
+    <div>
+      선택:
+      <span> 좋아하는 색상 : <%= userInfo.color %> </span>
+      <span> 좋아하는 색상 : <%= userInfo.num %> </span>
+    </div>
+  </body>
+</html>
