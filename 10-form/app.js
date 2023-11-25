@@ -3,7 +3,9 @@ const app = express();
 const PORT = 8000;
 
 app.set("view engine", "ejs");
-app.set("views", "./views");
+app.set("views", "./views"); // view 템플릿 파일을 찾을 때 사용할 디렉토리 지정
+// views는 고정값 : view 템플릿 파일을 찾을 때 사용할 디렉토리를 지정하겠다는 의미를 내포
+// -> view 탬플릿 파일(ejs)을 ./view 폴더에서 찾을 것이라는 의미
 
 // 미들웨어 등록
 
