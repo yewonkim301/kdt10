@@ -12,10 +12,15 @@ app.use(express.json());
 //   res.render("index");
 // });
 
-// 실습
+// 실습1
 app.get("/", (req, res) => {
   res.render("prac");
 });
+
+// 실습2
+// app.get("/", (req, res) => {
+//   res.render("prac2", { id: "홍길동", pw: "1234" });
+// });
 
 app.get("/ajax", (req, res) => {
   console.log(req.query);
@@ -35,14 +40,17 @@ app.get("/axios", (req, res) => {
   //   res.status(400).send("error msg!");
 });
 
+/*
 app.post("/axios", (req, res) => {
   console.log(req.body);
   res.send(req.body);
-  const msg;
-  //   실습
-  if (req.body.id != userId) {
-    msg = "id를 확인하세요"
-  }
+});
+*/
+
+// 실습2(post)
+app.post("/axios", (req, res) => {
+  console.log(req.body);
+  res.render("prac2", { id: "홍길동", pw: "1234" });
 });
 
 // fetch
@@ -56,10 +64,6 @@ app.post("/fetch", (req, res) => {
   console.log(req.body);
   res.send(req.body);
 });
-
-// 실습
-const userId = "홍길동";
-const userPw = "1234";
 
 app.listen(PORT, () => {
   console.log(`server is opening ${PORT}`);
