@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>prac_file upload</title>
+  </head>
+  <body>
+    <form action="signIn">
+      <input type="text" name="id" id="id" placeholder="아이디" /><br />
+      <input type="password" name="pw" id="pw" placeholder="비밀번호" /><br />
+      <input type="text" name="name" id="name" placeholder="이름" /><br />
+      <input type="text" name="age" id="age" placeholder="나이" /><br />
+      <input type="file" name="image" id="image" /><br /><br />
+      <button type="button" onclick="signIn()">회원가입</button>
+
+      <br /><br /><br />
+      <div class="result">
+        <img src="" alt="" />
+      </div>
+    </form>
+
+    <script>
+      function signIn() {
+        const formData = new FormData();
+        console.log(logIn);
+        const info = {};
+      }
+    </script>
+  </body>
+</html>

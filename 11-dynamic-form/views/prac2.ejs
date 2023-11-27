@@ -85,6 +85,12 @@
           pw: form.pw.value,
         };
 
+        // form validation
+        if (!form.id.checkValidity() || !form.pw.checkValidity()) {
+          resultBox.textContent = "아이디와 패스워드는 필수값입니다!";
+          return;
+        }
+
         axios({
           method: "post",
           url: "/axios",
@@ -101,6 +107,18 @@
             } else {
               resultBox.innerHTML = `<span style = "color: blue">로그인에 성공했습니다.</span>`;
             }
+
+            // 해설
+            // if (response.data.isSuccess) {
+            //   // 로그인 성공
+            //   resultBox.textContent = `${response.data.userInfo.id}님! 로그인 성공!`;
+            //   resultBox.classList.remove("red");
+            //   resultBox.classList.add("blue");
+            // } else {
+            //   resultBox.textContent = `아이디 또는 패스워드가 잘못됐습니다.`;
+            //   resultBox.classList.remove("blue");
+            //   resultBox.classList.add("red");
+            // }
           })
           .catch((err) => {
             console.log(err);

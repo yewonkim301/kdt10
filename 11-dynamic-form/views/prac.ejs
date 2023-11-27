@@ -85,6 +85,24 @@
         for (let i = 0; i < form.hobby.length; i++) {
           if (form.hobby[i].checked == true) hobbyChecked = form.hobby[i].value;
         }
+
+        // 해설
+        // hobby checkbox 정보 출력하고 싶은 경우, 다음과 같이 새로운 배열로 정의
+        // case1.forEach 반복문 사용
+        // const hobbies = [];
+        // form.hobby.forEach((elem) => {
+        //   if (elem.checked) {
+        //     //체크가 되어 있으면 true 반환
+        //     hobbies.push(elem.value);
+        //   }
+        // });
+
+        // case2.filter, map 반복문 사용
+        // Array.from(arrayLike) : 유사 배열 객체를 배열로 반환해준다.
+        // const hobbies = Array.from(form.hobby)
+        //   .filter((elem) => elem.checked == true)
+        //   .map((elem) => elem.value);
+
         const data = {
           name: form.userName.value,
           gender: form.gender.value,
@@ -92,7 +110,11 @@
           birthMonth: form.birthMonth.value,
           birthDay: form.birthDay.value,
           hobby: hobbyChecked,
+          // hobby: hobbies;
         };
+        console.log(form.hobby.value); // value라는 속성에 접근 x => NodeList 형태로 반환, (form.hobby) => name = hobby 라는 태그가 많아서
+        console.log(form.userName.value); // value 라는 속성에 접근 o => 하나의 요소로 반환, (form.userName)
+
         console.log(data);
         axios({
           method: "get",
