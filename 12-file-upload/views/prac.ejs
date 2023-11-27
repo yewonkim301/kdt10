@@ -3,28 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- axios cdn -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>prac_file upload</title>
+    <style>
+      .hidden {
+        visibility: hidden;
+      }
+      .result {
+        width: 250px;
+        height: 400px;
+        background-color: #daeaf6;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+      }
+      #userId {
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+    </style>
   </head>
   <body>
-    <form action="signIn">
+    <form action="" name="signIn">
       <input type="text" name="id" id="id" placeholder="아이디" /><br />
       <input type="password" name="pw" id="pw" placeholder="비밀번호" /><br />
       <input type="text" name="name" id="name" placeholder="이름" /><br />
       <input type="text" name="age" id="age" placeholder="나이" /><br />
       <input type="file" name="image" id="image" /><br /><br />
-      <button type="button" onclick="signIn()">회원가입</button>
+      <button type="button" onclick="register()">회원가입</button>
 
       <br /><br /><br />
-      <div class="result">
+      <div class="result hidden">
         <img src="" alt="" />
+        <span id="userId">1</span>
+        <span id="userPw">2</span>
+        <span id="userName">3</span>
+        <span id="userAge">4</span>
       </div>
     </form>
 
     <script>
-      function signIn() {
+      const form = document.forms["signIn"];
+      function register() {
         const formData = new FormData();
-        console.log(logIn);
-        const info = {};
+        const id = document.querySelector("#id");
+        const pw = document.querySelector("#pw");
+        const name = document.querySelector("#name");
+        const age = document.querySelector("#age");
+        const image = document.querySelector("#image");
+
+        formData.append("id", id.value);
+        formData.append("pw", pw.value);
+        formData.append("name", name.value);
+        formData.append("age", age.value);
+        console.log(image.files);
+        formData.append("image", image.files[0]);
+
+        axios({
+          method: "post",
+          url: "/signIn",
+          data: formData,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }).then((res) => {
+          console.log(res.data);
+          const result = document.querySelector(".result");
+          const { id, pw, name, age, file } = res.data;
+
+          const imgElem = document.querySelector("img");
+          const userId = document.querySelector("#userId");
+          const userPw = document.querySelector("#userPw");
+          const userName = document.querySelector("#userName");
+          const userAge = document.querySelector("#userAge");
+          imgElem.src = "/" + file.path;
+          imgElem.alt = file.filename;
+          userId.textContent = `${id}님 환영합니다!`;
+          userPw.textContent = `비밀번호: ${pw}`;
+          userName.textContent = `이름: ${name}`;
+          userAge.textContent = `나이: ${age}`;
+
+          result.classList.remove("hidden");
+        });
       }
     </script>
   </body>

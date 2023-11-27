@@ -111,10 +111,17 @@ app.post("/dynamic", uploadDetail.single("dynamicFile"), (req, res) => {
   res.send({ file: req.file, title: req.body.title });
 });
 
-app.post("/logIn", uploadDetail.single("logIn"), (req, res) => {
+// 실습
+app.post("/signIn", uploadDetail.single("image"), (req, res) => {
   console.log(req.file);
   console.log(req.body);
-  res.send({ file: req.file, title: req.body.title });
+  res.send({
+    id: req.body.id,
+    pw: req.body.pw,
+    name: req.body.name,
+    age: req.body.age,
+    file: req.file,
+  });
 });
 
 app.listen(PORT, () => {
