@@ -42,6 +42,8 @@ INSERT INTO customer VALUES('jy9987', '강지연', '일본 삿포로', '01012312
 -- 패턴: LIKE
 -- NULL: IS NULL, IS NOT NULL
 -- 복합조건 : AND, OR, NOT
+
+
 select * from customer;
 select custid from customer;
 
