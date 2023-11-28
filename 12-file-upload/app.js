@@ -35,6 +35,32 @@ const uploadDetail = multer({
   },
 });
 
+// 해설
+// multer 세부 설정 - 실습용
+const uploadPractice = multer({
+  // storage: 저장할 공간에 대한 정보
+  storage: multer.diskStorage({
+    // destination : 경로 설정
+    destination(req, file, done) {
+      // done: 콜백 함수
+      // done(null, xx) : null -> 에러가 없다는 의미
+      done(null, "uploads/"); // 파일을 업로드할 경로 설정
+    },
+    filename(req, file, done) {
+      console.log("file name > req.body : ", req.body);
+      // 파일의 확장자를 추출 => "path" 모듈 활용
+      const ext = path.extname(file.originalname);
+      console.log("ext > ", ext);
+
+      done(null, req.body.id + ext);
+    },
+  }),
+  // limits: 파일 제한 정보
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5MB
+  },
+});
+
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.urlencoded({ extended: true }));
@@ -47,7 +73,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 //   res.render("index");
 // });
 
-// 실습
+// 실습(self)
 app.get("/", (req, res) => {
   res.render("prac");
 });
@@ -111,7 +137,7 @@ app.post("/dynamic", uploadDetail.single("dynamicFile"), (req, res) => {
   res.send({ file: req.file, title: req.body.title });
 });
 
-// 실습
+// 실습(self)
 app.post("/signIn", uploadDetail.single("image"), (req, res) => {
   console.log(req.file);
   console.log(req.body);
@@ -122,6 +148,18 @@ app.post("/signIn", uploadDetail.single("image"), (req, res) => {
     age: req.body.age,
     file: req.file,
   });
+});
+
+// 실습 해설
+app.post("/upload/practice", uploadPractice.single("profile"), (req, res) => {
+  console.log(req.body);
+  console.log(req.file);
+  res.send("응답");
+});
+app.post("/upload/practice2", uploadPractice.single("profile"), (req, res) => {
+  console.log(req.body);
+  console.log(req.file);
+  res.send("회원가입 완료");
 });
 
 app.listen(PORT, () => {
