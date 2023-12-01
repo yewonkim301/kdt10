@@ -5,7 +5,7 @@ const controller = require("../controller/Cprac");
 
 router.get("/", controller.prac);
 
-// /prac/axios2
-router.post("/axios2", controller.logIn);
+// /prac/login
+router.post("/login", controller.logIn);
 
 module.exports = router;

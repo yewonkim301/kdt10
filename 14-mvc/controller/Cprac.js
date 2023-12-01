@@ -14,5 +14,4 @@ exports.logIn = (req, res) => {
   } else {
     res.send({ isSuccess: false });
   }
-  // 결과 값을 반환
 };
