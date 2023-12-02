@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sign in</title>
+  </head>
+  <body>
+    <h1>로그인</h1>
+    <br />
+    <form name="loin-form">
+      <div>ID <input type="text" name="id" id="id" placeholder="ID" /></div>
+      <div>
+        Password <input type="password" id="pw" name="pw" placeholder="PW" />
+      </div>
+      <button type="button" onclick="login()">Login</button>
+      <a href="/user/signup">Register</a>
+    </form>
+    <script>
+      function login() {
+        const form = document.forms["login-form"];
+
+        const data = {
+          loginId: form.id.value,
+          loginPw: form.pw.value,
+        };
+
+        if (!form.id.checkValidity() || !form.pw.checkValidity()) {
+          alert("아이디와 패스워드는 필수 값입니다!");
+          return;
+        }
+        axios({
+          method: "post",
+          url: "/user/signin",
+          data: data,
+        }).then((res) => {
+          console.log(response.data);
+        });
+      }
+    </script>
+  </body>
+</html>
