@@ -3,17 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- axios cdn -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <title>sign in</title>
   </head>
   <body>
     <h1>로그인</h1>
     <br />
-    <form name="loin-form">
+    <form name="login-form">
       <div>ID <input type="text" name="id" id="id" placeholder="ID" /></div>
       <div>
         Password <input type="password" id="pw" name="pw" placeholder="PW" />
       </div>
-      <button type="button" onclick="login()">Login</button>
+      <button type="button" onclick="login()">Login</button><br />
       <a href="/user/signup">Register</a>
     </form>
     <script>
@@ -26,7 +30,7 @@
         };
 
         if (!form.id.checkValidity() || !form.pw.checkValidity()) {
-          alert("아이디와 패스워드는 필수 값입니다!");
+          console.log("아이디와 패스워드는 필수 값입니다!");
           return;
         }
         axios({
@@ -34,7 +38,28 @@
           url: "/user/signin",
           data: data,
         }).then((res) => {
-          console.log(response.data);
+          console.log("signin > ", res.data);
+          const loginId = res.data.userInfo;
+
+          if (!res.data) {
+            alert("일치하는 사용자가 없습니다.");
+          } else if (res.data.isSuccess == true) {
+            // form.submit();
+            // document.location.href = `/user/profile`;
+
+            //  gpt
+            axios({
+              method: "post",
+              url: "/user/profile",
+              data: data,
+            }).then((res) => {
+              document.location.href = `/user/profile`;
+              console.log("Profile response: ", res.data);
+            });
+          } else {
+            alert("로그인 실패!");
+            form.reset();
+          }
         });
       }
     </script>

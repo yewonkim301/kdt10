@@ -17,4 +17,9 @@ router.get("/signin", controller.sign_in);
 // POST /user.signin
 router.post("/signin", controller.post_sign_in);
 
+// POST /user/profile
+router.post("/profile", controller.post_profile);
+
+router.get("/profile", controller.profile);
+
 module.exports = router;

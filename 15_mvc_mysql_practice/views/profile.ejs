@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- axios cdn -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <title>profile</title>
   </head>
   <body>
@@ -18,8 +22,19 @@
       <div>
         Name <input type="text" name="profile_name" placeholder="NAME" />
       </div>
-      <button type="button">Edir</button>
+      <button type="button">Edit</button>
       <button type="button">Delete</button>
     </form>
+    <script>
+      window.onload = function () {
+        axios({
+          method: "post",
+          url: "/user/profile",
+          data: data,
+        }).then((res) => {
+          console.log("profile.ejs post > ", res);
+        });
+      };
+    </script>
   </body>
 </html>
