@@ -12,12 +12,16 @@
     <h1>회원가입</h1>
     <br />
     <form name="signup-form">
-      <div>ID <input type="text" name="signup_id" placeholder="ID" /></div>
       <div>
-        Password <input type="password" name="signup_pw" placeholder="PW" />
+        ID <input type="text" name="signup_id" placeholder="ID" required />
       </div>
       <div>
-        Name <input type="text" name="signup_name" placeholder="NAME" />
+        Password
+        <input type="password" name="signup_pw" placeholder="PW" required />
+      </div>
+      <div>
+        Name
+        <input type="text" name="signup_name" placeholder="NAME" required />
       </div>
       <button type="button" onclick="signUp()">Register</button>
       <a href="/user/signin">Login</a>
@@ -27,6 +31,10 @@
       function signUp() {
         const form = document.forms["signup-form"];
 
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
         axios({
           method: "POST",
           url: "/user/signup",
@@ -38,10 +46,12 @@
         }).then((res) => {
           console.log("res > ", res.data);
           const data = res.data;
+          alert("회원가입 성공!");
+          document.location.href = "/user/signin";
         });
 
-        alert("회원가입 성공!");
-        document.location.href = "/user/signin";
+        // alert("회원가입 성공!");
+        // document.location.href = "/user/signin";
       }
     </script>
   </body>

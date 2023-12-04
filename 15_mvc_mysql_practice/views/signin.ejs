@@ -6,7 +6,6 @@
 
     <!-- axios cdn -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
     <title>sign in</title>
   </head>
   <body>
@@ -20,9 +19,54 @@
       <button type="button" onclick="login()">Login</button><br />
       <a href="/user/signup">Register</a>
     </form>
+    <!-- 로그인 버튼 클릭하면 성공시 profile.ejs에서 특정 유저 정보를 보여줘야 하기 때문에 userid 정보를 value에 저장해서 넘겨줌 -->
+    <!-- 로그인 성공시, 프로필 페이지로 이동할 폼 -->
+    <form name="info-form" action="/user/profile" method="POST">
+      <input type="hidden" name="userid" value="" />
+    </form>
     <script>
+      // 해설
+      async function login() {
+        const form = document.forms["login-form"];
+        const form_info = document.forms["info-form"];
+
+        const data = {
+          loginId: form.id.value,
+          loginPw: form.pw.value,
+        };
+
+        try {
+          let res = await axios({
+            method: "POST",
+            url: "/user/signin",
+            data: {
+              loginId: form.id.value,
+              loginPw: form.pw.value,
+            },
+          });
+
+          console.log(res.data);
+          const { data } = res;
+
+          if (data.isSuccess) {
+            alert("로그인 성공!");
+
+            // profile 페이지 요청 보내기
+            form_info.userid.value = form.id.value;
+            // form_info 제출 - POST /user/profile (일반 폼 전송)
+            form_info.submit();
+          } else {
+            alert("로그인 실패!");
+            form.reset(); // 폼 초기화
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      /*
       function login() {
         const form = document.forms["login-form"];
+        const form_info = document.forms["info-form"];
 
         const data = {
           loginId: form.id.value,
@@ -38,30 +82,25 @@
           url: "/user/signin",
           data: data,
         }).then((res) => {
-          console.log("signin > ", res.data);
-          const loginId = res.data.userInfo;
+          console.log("signin > ", res.data.userInfo);
+          // const loginId = res.data.userInfo;
+          const loginInfo = res.data.userInfo;
 
           if (!res.data) {
             alert("일치하는 사용자가 없습니다.");
           } else if (res.data.isSuccess == true) {
-            // form.submit();
-            // document.location.href = `/user/profile`;
-
-            //  gpt
-            axios({
-              method: "post",
-              url: "/user/profile",
-              data: data,
-            }).then((res) => {
-              document.location.href = `/user/profile`;
-              console.log("Profile response: ", res.data);
-            });
+            form_info.loginId.value = loginInfo.userid;
+            form_info.loginPw.value = loginInfo.pw;
+            form_info.loginName.value = loginInfo.name;
+            console.log(form_info.loginPw.value);
+            form_info.submit();
           } else {
             alert("로그인 실패!");
             form.reset();
           }
         });
       }
+      */
     </script>
   </body>
 </html>

@@ -15,26 +15,87 @@
     <a href="/user">HOME</a><br /><br />
     <span>ID 수정 불가능, Password, Name 수정 가능</span><br /><br />
     <form name="profile-form">
-      <div>ID <input type="text" name="profile_id" placeholder="ID" /></div>
       <div>
-        Password <input type="password" name="profile_pw" placeholder="PW" />
+        ID
+        <input
+          type="text"
+          name="profile_id"
+          placeholder="ID"
+          value="<%= data.userid %>"
+          readonly
+        />
       </div>
       <div>
-        Name <input type="text" name="profile_name" placeholder="NAME" />
+        Password
+        <input
+          type="password"
+          name="profile_pw"
+          placeholder="PW"
+          value="<%= data.pw %>"
+          required
+        />
       </div>
-      <button type="button">Edit</button>
-      <button type="button">Delete</button>
+      <div>
+        Name
+        <input
+          type="text"
+          name="profile_name"
+          placeholder="NAME"
+          value="<%= data.name %>"
+          required
+        />
+      </div>
+      <button type="button" onclick="profileEdit()">Edit</button>
+      <button type="button" onclick="profileDelete()">Delete</button>
     </form>
     <script>
-      window.onload = function () {
+      function profileEdit() {
+        const form = document.forms["profile-form"];
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
         axios({
-          method: "post",
-          url: "/user/profile",
-          data: data,
+          method: "PATCH",
+          url: "/user/profile/edit",
+          data: {
+            userId: form.profile_id.value,
+            userPw: form.profile_pw.value,
+            userName: form.profile_name.value,
+          },
         }).then((res) => {
-          console.log("profile.ejs post > ", res);
+          console.log(res);
+          alert("수정 성공");
         });
-      };
+      }
+      function profileDelete() {
+        const form = document.forms["profile-form"];
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        axios({
+          method: "DELETE",
+          url: "/user/profile/delete",
+          data: {
+            userId: form.profile_id.value,
+            userPw: form.profile_pw.value,
+            userName: form.profile_name.value,
+          },
+        })
+          .then((res) => {
+            console.log(res);
+            alert("회원 탈퇴 성공!");
+
+            // 회원 탈퇴 했으먄 프로필 페이지 x -> 메인 페이지로 이동
+            document.location.href = "/user";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     </script>
   </body>
 </html>
