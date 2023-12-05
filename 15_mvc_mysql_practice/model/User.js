@@ -52,7 +52,7 @@ exports.postProfile = (userid, cb) => {
   const sql = "SELECT * FROM user WHERE userid = ? ";
 
   conn.query(sql, [userid], (err, rows) => {
-    if (err) throw err;
+    if (err) throw err; // 에러 처리 해준 것은 아니고, 에러를 감지할 수 있도록 하는 코드
     console.log("getProfile User.js > ", rows);
     cb(rows);
   });

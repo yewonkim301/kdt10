@@ -31,7 +31,7 @@ exports.post_sign_up = (req, res) => {
     pw: pw,
   }).then((result) => {
     console.log("create > ", result);
-    res.send(result); //   dataValues: { id: 12, userid: 'f', name: 'f', pw: 'f' }
+    res.send(result);
   });
 };
 
@@ -67,6 +67,8 @@ exports.post_sign_in = (req, res) => {
     where: { userid: req.body.loginId, pw: req.body.loginPw },
   }).then((result) => {
     console.log("findOne", result);
+    //   dataValues: { id: 12, userid: 'f', name: 'f', pw: 'f' }  -> 프로트로 보낼 때는 이 값만 넘어감  // result에 이 값만 나오게 하고 싶으면 raw: true로 설정
+
     // result
     // id, pw 일치 : {}
     // 불일치 : null
