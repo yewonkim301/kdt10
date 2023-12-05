@@ -10,8 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // 라우터 분리
-// const indexRouter = require("./routes/index");
-// app.use("/", indexRouter); // localhost:PORT/
+const indexRouter = require("./routes"); // routes 뒤에 파일명이 index(기본값)일때는 생략 가능하나, 다르면 적어줘야 함.
+app.use("/", indexRouter); // localhost:PORT/
 
 // [404 error] 맨 마지막 라우트로 선언
 app.get("*", (req, res) => {

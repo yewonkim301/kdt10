@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- axios cdn -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>sign up</title>
+  </head>
+  <body>
+    <h1>회원가입</h1>
+    <br />
+    <form name="signup-form">
+      <div>
+        ID <input type="text" name="signup_id" placeholder="ID" required />
+      </div>
+      <div>
+        Password
+        <input type="password" name="signup_pw" placeholder="PW" required />
+      </div>
+      <div>
+        Name
+        <input type="text" name="signup_name" placeholder="NAME" required />
+      </div>
+      <button type="button" onclick="signUp()">Register</button>
+      <a href="/user/signin">Login</a>
+      <!-- 회원 가입 성공시 로그인 페이지로 이동 -->
+    </form>
+    <script>
+      function signUp() {
+        const form = document.forms["signup-form"];
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        axios({
+          method: "POST",
+          url: "/user/signup",
+          data: {
+            id: form.signup_id.value,
+            pw: form.signup_pw.value,
+            name: form.signup_name.value,
+          },
+        }).then((res) => {
+          console.log("res > ", res.data);
+          const data = res.data;
+          alert("회원가입 성공!");
+          document.location.href = "/user/signin";
+        });
+
+        // alert("회원가입 성공!");
+        // document.location.href = "/user/signin";
+      }
+    </script>
+  </body>
+</html>
