@@ -60,6 +60,9 @@
         font-size: 16px;
         margin-top: 5px;
       }
+      .hidden {
+        display: none;
+      }
     </style>
     <title>Prac2</title>
   </head>
@@ -70,16 +73,67 @@
         <input type="text" name="id" placeholder="ID" id="id" />
         <input type="password" name="pw" placeholder="PW" id="pw" />
         <div class="result"></div>
-        <button type="button" onclick="axiosPost()">로그인</button>
+        <button type="button" id="signinBtn" onclick="signIn()">
+          회원가입
+        </button>
+        <button type="button" id="loginBtn" onclick="axiosPost()">
+          로그인
+        </button>
+      </div>
+    </form>
+    <form name="logOut">
+      <h1>NAVER</h1>
+      <div class="logoutForm">
+        <div class="result2"></div>
+        <button type="button" id="logoutBtn" onclick="logout()">
+          로그아웃
+        </button>
       </div>
     </form>
 
     <script>
-      const userId = "<%= id %>";
-      const userPw = "<%= pw %>";
       const resultBox = document.querySelector(".result");
+      const resultBox2 = document.querySelector(".result2");
+      const loginBtn = document.querySelector(".loginBtn");
+      const form = document.forms["logIn"];
+      const logoutForm = document.forms["logOut"];
+
+      if ("<%= isLogin %>" === "true") {
+        form.classList.add("hidden");
+        logoutForm.classList.remove("hidden");
+      } else if ("<%= isLogin %>" === "") {
+        logoutForm.classList.add("hidden");
+        form.classList.remove("hidden");
+      }
+
+      function signIn() {
+        const data = {
+          id: form.id.value,
+          pw: form.pw.value,
+        };
+
+        // form validation
+        if (!form.id.checkValidity() || !form.pw.checkValidity()) {
+          resultBox.textContent = "아이디와 패스워드는 필수값입니다!";
+          return;
+        }
+
+        axios({
+          method: "post",
+          url: "/set",
+          data: data,
+        })
+          .then((response) => {
+            console.log(response.data);
+            form.reset();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
       function axiosPost() {
-        const form = document.forms["logIn"];
+        // const form = document.forms["logIn"];
         const data = {
           id: form.id.value,
           pw: form.pw.value,
@@ -97,12 +151,33 @@
           data: data,
         })
           .then((response) => {
+            console.log(response.data);
             if (response.data.isSuccess) {
               // 로그인 성공
-              resultBox.innerHTML = `<span style = "color: blue">로그인에 성공했습니다.</span>`;
+              console.log(resultBox);
+              form.classList.add("hidden");
+              resultBox2.innerHTML = `<span style = "color: blue">${response.data.userInfo}님 환영합니다.</span>`;
+              logoutForm.classList.remove("hidden");
             } else {
               resultBox.innerHTML = `<span style = "color: red">아이디와 비밀번호를 확인해주세요.</span>`;
             }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+      function logout() {
+        axios({
+          method: "post",
+          url: "/destroy",
+        })
+          .then((response) => {
+            console.log(response.data);
+            logoutForm.classList.add("hidden");
+            form.classList.remove("hidden");
+            form.reset();
+            resultBox.innerHTML = "";
           })
           .catch((err) => {
             console.log(err);
