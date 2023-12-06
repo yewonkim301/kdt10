@@ -132,7 +132,7 @@ app.post(
 
 // 동적 폼 전송
 app.post("/dynamic", uploadDetail.single("dynamicFile"), (req, res) => {
-  console.log(req.file);
+  console.log("dynamic > ", req.file);
   console.log(req.body);
   res.send({ file: req.file, title: req.body.title });
 });

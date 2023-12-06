@@ -2,7 +2,7 @@ desc profile;
 desc team;
 desc player;
 
-select * from profile;
+select * from player;
 
 insert into team(name, createdAt, updatedAt) values 
   ('sk', now(), now()), 
