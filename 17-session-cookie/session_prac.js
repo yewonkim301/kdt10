@@ -30,9 +30,11 @@ app.use(
 );
 
 app.get("/", (req, res) => {
+  console.log(req, session);
   res.render("prac2", {
     // id: user.id,
     // pw: user.pw,
+    userInfo: req.session.userId,
     isLogin: req.session.isLogin,
   });
   console.log(req.session);

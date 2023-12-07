@@ -106,7 +106,7 @@
           axios({
             method: "POST",
             url: "/setcookie",
-            data: cookie.checked,
+            data: cookie.checked, // 생략 가능
           }).then((res) => {
             console.log("res > ", res);
           });
