@@ -31,7 +31,7 @@ const upload = multer({
       cb(null, { fieldName: file.fieldname }); // null은 에러 없다는 의미
     },
     key: (req, file, cb) => {
-      cb(null), Date.now().toString() + "-" + file.originalname;
+      cb(null, Date.now().toString() + "-" + file.originalname);
     },
   }),
 });
