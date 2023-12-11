@@ -4,6 +4,7 @@ const db = require("./models/index");
 const dotenv = require("dotenv");
 const session = require("express-session");
 dotenv.config();
+const jwt = require("jsonwebtoken");
 const PORT = process.env.PORT || 8888;
 
 app.set("view engine", "ejs");

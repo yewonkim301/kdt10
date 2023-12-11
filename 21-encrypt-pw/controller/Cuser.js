@@ -2,6 +2,8 @@
 // TODO: bcrypt 패키지 불러오기
 const models = require("../models/index");
 const User = models.User;
+const jwt = require("jsonwebtoken");
+const SECRET = "dhhsf567jk24sdnakjf";
 
 let hashedPW = "";
 let originalPW = "";
@@ -26,18 +28,38 @@ exports.getUsers = async (req, res) => {
   // 세션에 userInfo 데이터가 있다면; 전체 유저를 찾음
   // 세션에 userInfo 데이터가 없다면; /login 경로로 리다이렉트
   // -> 즉, 해당 요청은 로그인한 사람만 전체 유저를 조회할 수 있음
-  res.render("users");
+  try {
+    console.log("getUsers > ", req.session.userInfo);
+    if (req.session.userInfo) {
+      const users = await User.findAll({});
+      console.log("getUsers users > ", users);
+      res.render("users", { name: req.session.userInfo.name, users: users });
+    } else {
+      res.redirect("/login");
+    }
+  } catch (err) {
+    console.error(err);
+    res.send("Internal Server Error!");
+  }
 };
 
 exports.getProfile = async (req, res) => {
   // 1. userInfo 세션에 저장된 id를 이용해 현재 로그인한 유저의 id 값으로 특정 유저 정보 하나를 조회
   // 2. profile.ejs 랜더 + data 키로 특정 유저를 찾은 결과를 넘김
-  console.log(req.session.userInfo);
-  const user = await User.findOne({
-    where: { id: req.session.id },
-  });
-  console.log(user);
-  res.render("profile");
+  try {
+    const token = jwt.verify(req.session.token, SECRET).id;
+    const user = await User.findOne({
+      where: { userid: token },
+    });
+    if (user) {
+      res.render("profile", { data: user });
+    } else {
+      res.redirect("/");
+    }
+  } catch (err) {
+    console.error(err);
+    res.send("Internal Server Error!");
+  }
 };
 
 exports.postRegister = async (req, res) => {
@@ -94,10 +116,12 @@ exports.postLogin = async (req, res) => {
           id: result.id,
         };
         console.log(req.session);
+        console.log(result);
         if (comparePW) {
+          const token = jwt.sign({ id: result.userid }, SECRET);
+          req.session.token = token;
           res.send({ result: true, data: result });
         }
-
         // 2-1-2. 비밀번호 불일치;
         //    응답 데이터; { result: false, message: '비밀번호가 틀렸습니다.'
         else {
@@ -119,11 +143,42 @@ exports.postLogin = async (req, res) => {
 exports.patchProfile = async (req, res) => {
   // 사용자가 요청한 데이터를 변경
   // 응답 데이터; { result: true }
+  try {
+    console.log(req.body);
+    const result = await User.update(
+      {
+        name: req.body.name,
+        pw: req.body.pw,
+      },
+      {
+        where: { id: req.body.id },
+      }
+    );
+    res.send({ result: true });
+  } catch (err) {
+    console.error(err);
+    res.send("Internal Server Error!");
+  }
 };
 
 exports.deleteUser = async (req, res) => {
   // 1. 유저 삭제
   // 2. 세션 삭제
+  try {
+    const result = await User.destroy({
+      where: { id: req.body.id },
+    });
+    req.session.destroy((err) => {
+      if (err) {
+        console.log(err);
+        res.send("fail");
+      }
+    });
+    res.send({ result: true });
+  } catch (err) {
+    console.error(err);
+    res.send("Internal Server Error!");
+  }
 };
 
 // 비밀번호 암호화 함수 => (선택) 가능하다면 비밀번호 암호화와 관련된 별도의 모듈로 작성해보기! (utils/encrypt.js)
