@@ -9,6 +9,9 @@ const server = http.createServer(app);
 const io = socketIO(server);
 const PORT = 8000;
 
+// 사용자 아이디 모음 객체
+const userObjs = {};
+
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   res.render("chat");
@@ -49,7 +52,44 @@ io.on("connection", (socket) => {
   // - io.to(소켓 아이디).socket.emit(event_name, data) : 소켓 아이디에 해당하는 클라이언트에게만 전송
 
   // 전체 클라이언트에게 입장 안내
-  io.emit("notice", `${socket.id} 님이 입장하셨습니다.`);
+  // io.emit("notice", `${socket.id} 님이 입장하셨습니다.`);
+
+  // [ 실습 4 ] 채팅창 메세지 전송
+  socket.on("send", (data) => {
+    console.log("send 이벤트로 받은 data > ", data); // { id: '7gKLKePiq1a21jpYAAAD', msg: 'apple2', dm: ? }
+
+    // [ 실습 5 ] DM인지 아닌지 구분
+    // dm: io.to(socket.id).emit() -> 소켓 아이디에 해당하는 클라이언트에게만 전송
+    if (data.dm === "all") {
+      // "전체" 발송
+      io.emit("newMessage", { id: data.id, msg: data.msg });
+    } else {
+      // "DM" 발송
+      const dmSocketId = data.dm;
+      const sendData = {
+        id: data.id,
+        msg: data.msg,
+        dm: "(DM) ",
+      };
+      // dm을 받는 사람한테 메세지 갔음
+      io.to(dmSocketId).emit("newMessage", sendData);
+      // dm을 보낸 사람한테 자기자신의 메세지를 띄워줘야 함
+      socket.emit("newMessage", sendData);
+    }
+  });
+
+  // [ 실습 5 ] DM Step1
+  socket.on("setUserList", (data) => {
+    console.log(`유저 입장 : ${data.id}`);
+    // 입장 전체 공지
+    io.emit("notice", `${data.id} 님이 입장하셨습니다.`);
+    // 전체 사용자 아이디 모음 객체 전달
+    // 새로운 유저면 추가
+    // {data.id : data.id}
+    userObjs[data.id] = data.id;
+    socket.emit("entrySuccess", socket.id); // 현재 입장한 사람에게 입장 완료 안내
+    io.emit("updateUsers", userObjs); // 전체 사용자 업데이트
+  });
 });
 
 server.listen(PORT, () => {
