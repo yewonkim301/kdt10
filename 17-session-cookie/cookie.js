@@ -25,7 +25,7 @@ const cookieConfig = {
   // expires : 만료 날짜를 GMT 시간대로 설정
   // path: 해당 디렉토리와 하위 디렉토리에서만 경로가 활성화되고 웹 브라우저는 해당하는 쿠키만 웹 서버에 전송 (기본값: /)
   // domain : 쿠키가 전송될 도메인을 특정 가능 (기본값: 현재 도메인)
-  // secure : 웹브라우저와 웹 서버가 https로 통ㅇ신하는 경우에만 쿠키를 서버에 전송
+  // secure : 웹브라우저와 웹 서버가 https로 통신하는 경우에만 쿠키를 서버에 전송
   // signed : 쿠키의 암호화 결정 (req.signedCookies 객체에 들어있음)
   httpOnly: true,
   maxAge: 60 * 1000, // 1 min

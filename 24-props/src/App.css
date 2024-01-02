@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+.food {
+  color: red;
+}
+
+.container {
+  background-color: #f5f5dc;
+  width: 500px;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.title {
+  color: orange;
+}
+
+.content {
+  font-weight: 800;
+  display: flex;
+  margin-left: 90px;
+}

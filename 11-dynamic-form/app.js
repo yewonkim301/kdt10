@@ -34,7 +34,7 @@ app.post("/ajax", (req, res) => {
 
 // axios
 app.get("/axios", (req, res) => {
-  console.log(req.query);
+  console.log("aixos", req.query);
   res.send(req.query);
   // 의도적으로 에러 발생
   //   res.status(400).send("error msg!");
