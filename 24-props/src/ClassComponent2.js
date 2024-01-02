@@ -2,17 +2,11 @@ import { Component } from 'react';
 
 class ClassComponent2 extends Component {
   render() {
-    const { text } = this.props;
+    const { text, valid } = this.props;
     return (
       <div>
         <h1>{text}</h1>
-        <button
-          onClick={function () {
-            console.log('콘솔 띄우기 성공!');
-          }}
-        >
-          콘솔 메세지
-        </button>
+        <button onClick={valid}>콘솔 메세지</button>
       </div>
     );
   }

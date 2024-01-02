@@ -7,6 +7,9 @@ import BookComponent from './BookComponent';
 import ClassComponent2 from './ClassComponent2';
 
 function App() {
+  function valid() {
+    console.log('콘솔 띄우기 성공!');
+  }
   return (
     <div className="App">
       <FuncComponent name={3} />
@@ -30,7 +33,10 @@ function App() {
       />
       <hr />
       <br />
-      <ClassComponent2 text="이건 컴포넌트에서 넘겨준 text props입니다." />
+      <ClassComponent2
+        text="이건 컴포넌트에서 넘겨준 text props입니다."
+        valid={valid}
+      />
     </div>
   );
 }
