@@ -12,7 +12,7 @@ function App() {
   }
   return (
     <div className="App">
-      <FuncComponent name={3} />
+      <FuncComponent name="gildong" />
       <FuncComponent />
       <hr />
       <Button link="https://www.google.com">Google</Button>

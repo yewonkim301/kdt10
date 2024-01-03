@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ClassComponent2 extends Component {
   render() {
@@ -14,6 +15,10 @@ class ClassComponent2 extends Component {
 
 ClassComponent2.defaultProps = {
   text: '이건 기본 text props입니다.',
+};
+
+ClassComponent2.propTypes = {
+  text: PropTypes.string.isRequired,
 };
 
 export default ClassComponent2;
