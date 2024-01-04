@@ -64,6 +64,10 @@ function Alphabet() {
         // onDoubleClick={}
       />
       <button onClick={addAlpha}>Add</button>
+      {/* 단축평가 */}
+      {inputAlpha.length === 0 && <span>알파벳을 입력해주세요</span>}
+      <br />
+      {null || <span>정의된 값이 없어요!</span>}
     </>
   );
 }

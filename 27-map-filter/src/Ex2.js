@@ -17,8 +17,11 @@ function Ex2() {
   const [inputEmail, setInputEmail] = useState('');
   const addData = (e) => {
     // bugFix: IME 문제 해결 (한글 마지막 한글자가 더 나옴)
+    // input 값이 빈값일 때 상태가 변하지 않도록
     if (e.nativeEvent.isComposing) return;
     if (e.key === 'Enter') {
+      if (inputName.trim().length === 0 || inputEmail.trim().length === 0)
+        return;
       const newData = data.concat({
         id: data.length + 1,
         name: inputName,
