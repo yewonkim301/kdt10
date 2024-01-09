@@ -1,0 +1,103 @@
+@import './_variable.scss';
+
+// Ex2
+@mixin animation($name, $distance) {
+  animation: $name;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 3s;
+  @keyframes #{$name} {
+    0% {
+      transform: translate(0, 0);
+      //   top: 0px;
+      //   left: 0px;
+    }
+    25% {
+      transform: translate($distance, 0);
+      //   top: 0;
+      //   left: $distance;
+    }
+    50% {
+      transform: translate($distance, $distance);
+      //   top: $distance;
+      //   left: $distance;
+    }
+    75% {
+      transform: translate(0, $distance);
+      //   top: $distance;
+      //   left: 0px;
+    }
+    100% {
+      transform: translate(0, 0);
+      //   top: 0;
+      //   left: 0;
+    }
+  }
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: relative;
+  top: 0;
+  left: 0;
+
+  &.pink {
+    background-color: $color-pink;
+    @include animation(c-pink, 10px);
+  }
+  &.yellow {
+    background-color: $color-yellow;
+    @include animation(c-yellow, 20px);
+  }
+  &.green {
+    background-color: $color-green;
+    @include animation(c-green, 30px);
+  }
+}
+
+// Ex3
+
+.title {
+  background-color: $color-blue;
+  height: 55px;
+  width: 100%;
+  text-align: center;
+  line-height: 55px;
+  color: $color-white;
+}
+
+div.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  div.content {
+    background-color: $color-skyblue;
+    width: 85%;
+    height: 120px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+
+    div span.c-id {
+      color: $color-blue;
+      font-weight: 600;
+    }
+
+    div.c-tbox2 {
+      display: flex;
+
+      span.c-content {
+        font-weight: 600;
+        text-align: left;
+      }
+    }
+  }
+}
